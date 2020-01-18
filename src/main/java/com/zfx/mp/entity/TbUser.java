@@ -1,5 +1,8 @@
 package com.zfx.mp.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,6 +31,12 @@ public class TbUser implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
+     * 主键ID
+     */
+    @TableId(value = "id", type = IdType.AUTO)
+    private Long id;
+
+    /**
      * 用户名
      */
     private String userName;
@@ -49,8 +58,12 @@ public class TbUser implements Serializable {
 
     /**
      * 邮箱
+     * 在MP中通过@TableField注解可以指定字段的一些属性
      */
-    private String email;
+    @TableField("email")//解决字段名不一致
+    private String mail;
 
+    @TableField(exist = false)//该字段在数据库表中不存在
+    private String address;
 
 }
