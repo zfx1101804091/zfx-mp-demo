@@ -2,7 +2,6 @@ package com.zfx.mp;
 
 import com.zfx.mp.entity.TbUser;
 import com.zfx.mp.mapper.TbUserMapper;
-import net.bytebuddy.asm.Advice;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

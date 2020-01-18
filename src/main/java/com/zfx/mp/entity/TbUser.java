@@ -1,5 +1,6 @@
 package com.zfx.mp.entity;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -21,6 +22,7 @@ import java.io.Serializable;
 @AllArgsConstructor//全参构造
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
+@TableName("tb_user")
 public class TbUser implements Serializable {
 
     private static final long serialVersionUID = 1L;
