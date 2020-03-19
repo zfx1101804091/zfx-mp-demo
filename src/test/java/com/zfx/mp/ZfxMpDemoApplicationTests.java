@@ -1,5 +1,6 @@
 package com.zfx.mp;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -23,6 +24,26 @@ public class ZfxMpDemoApplicationTests {
     
     @Autowired
     private TbUserMapper tbUserMapper;
+
+    /**
+     * 批量条件更新
+     */
+    @Test
+    public void updatenull(){
+        UpdateWrapper<TbUser> wrapper = new UpdateWrapper<TbUser>()
+                .eq("name", "xiang1")
+                .set("age", "100");
+        tbUserMapper.update(null,wrapper);
+    }
+
+    @Test
+    public void updatenull1(){
+        UpdateWrapper<TbUser> wrapper = new UpdateWrapper<TbUser>()
+                .eq("name", "xiang1")
+                .set("age", null);
+        tbUserMapper.update(null,wrapper);
+    }
+
 
     /*以前的mybatis查询所有*/
     @Test
@@ -237,6 +258,20 @@ public class ZfxMpDemoApplicationTests {
         for (TbUser user : users) { 
             System.out.println("user = " + user); 
         }
+    }
+    
+    
+    @Test
+    public void lambdaquery(){
+
+        LambdaQueryWrapper<TbUser> wrapper = new LambdaQueryWrapper<>();
+        LambdaQueryWrapper<TbUser> queryWrapper = wrapper.eq(TbUser::getName, "xiang1")
+                .like(TbUser::getUserName, "社会翔");
+        List<TbUser> tbUsers = tbUserMapper.selectList(queryWrapper);
+        tbUsers.forEach(tbUser -> {
+            System.out.println(tbUser);
+        });
+
     }
         
 }
