@@ -3,7 +3,7 @@
 <mapper namespace="com.zfx.mp.mapper.TbUserMapper">
 
 
-    <select id="findALL" resultType="com.zfx.mp.entity.TbUser">
+    <select id="findALL" resultType="TbUser">
         
         select * from tb_user;
     </select>
