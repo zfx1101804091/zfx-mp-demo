@@ -33,7 +33,8 @@ public class TbUser implements Serializable {
     /**
      * 主键ID
      */
-    @TableId(value = "id", type = IdType.AUTO)
+//    @TableId(value = "id", type = IdType.AUTO)
+    @TableId(value = "id", type = IdType.ID_WORKER)//适用于分布式自增id
     private Long id;
 
     /**
